@@ -3,7 +3,7 @@ import enum
 
 from aiohttp import web
 
-from aiorest_validator import (
+from aiovalidator import (
     validator_factory,
     middleware_exception,
     IntegerField,

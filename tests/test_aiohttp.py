@@ -4,7 +4,7 @@ import json
 import pytest
 from aiohttp import web
 
-from aiorest_validator import (
+from aiovalidator import (
     IntegerField,
     middleware_exception,
     validator_factory,

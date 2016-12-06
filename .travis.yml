@@ -36,4 +36,4 @@ deploy:
     tags: true
     all_branches: true
     distributions: sdist bdist_wheel
-    repo: vir-mir/aiorest_validator
+    repo: vir-mir/aiovalidator

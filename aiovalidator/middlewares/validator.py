@@ -4,8 +4,8 @@ import json
 import sys
 from functools import wraps
 
-from aiorest_validator.fields.base import BaseField
-from aiorest_validator.fields.manager import ManagerField
+from aiovalidator.fields.base import BaseField
+from aiovalidator.fields.manager import ManagerField
 
 PY_35 = sys.version_info >= (3, 5)
 if PY_35:

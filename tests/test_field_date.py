@@ -3,8 +3,8 @@ import time
 
 import pytest
 
-from aiorest_validator import DateTimeField, DateField, TimeStampField
-from aiorest_validator.middlewares.exception import HTTPExceptionJson
+from aiovalidator import DateTimeField, DateField, TimeStampField
+from aiovalidator.middlewares.exception import HTTPExceptionJson
 
 
 @pytest.mark.parametrize('format_,date', (
