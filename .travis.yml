@@ -1,38 +1,47 @@
 sudo: required
 language: python
+
 services:
   - docker
+
 python:
   - '3.4'
   - '3.5'
   - '3.6-dev'
+
 install:
   - python setup.py install
   - pip install -Ur requirements.txt
   - pip install codecov
+
 script:
   - make cov-ci
   - python setup.py check -ms
+
 env:
   global:
     - PYTHON=python
   matrix:
     - PYTHONASYNCIODEBUG=x
     - PYTHONASYNCIODEBUG=
+
 cache:
   directories:
     - "$HOME/.cache/pip"
+
 before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
+
 after_script:
   - codecov
 deploy:
   provider: pypi
   user: virmir49
   password:
-    secure: "U0RWPGhTR/d4v2P8GrFFlOUtK32Tya28Noeg4/b4Bcnih5ak9uM7+FH9WL+tb+2TkDYY7Eo4qnTMgdAB0boW6eXWdPw/uq2O7q4katrTY7NaPmKhxArhDxl6Ngv01IjTCnPT574SEcmeBJZPB/w1zo+Erpbj8C2r2mTqQaDdFKbJZMzR6gBG73CtIwa0UV2bkcK0cmUqfdEr1Ma9xoFX0Xnr8EKdwoTZUNqH1ReLMDO3/T5ThmuByA07Mkq16lDH4SK+2dhIhYqAMbtYN1Y75TqbufhtDCfjWowXBxiqfNC2VNdhivMQCK5mso983pB4kYD0pUy3aDpH5n94ToRRaHGp0tjbuExTIbi1Ft052yiGvYjxXWyfO1x119ODr37YXS3PMqr73j4agtn6LBvxdntW2dTctJKfuWQBdYHp9a6VvDED7STn1hSKTd2I8iBlftHU7IBtqhkop6o48pQZ5U7+s53Oyy4CKZOUH2e58YJ9l6P/p58e45QCt0WVR2jdEUK6G4miYy2Nj6vgW6m6DniBbyA+hbT7nj4NvONlEyjvRwNNsy29+HJm2ZkOYY4J8PGFNRf5D/3Uy/2EZ+exEeRRcYrYST4x9tyNca4ct7N0ypS9xXhgsS8IV42OCFL6yneFFYdI0La2XQ4Wr1rlMW3O6w5iMH/kjI2MXGaz/Fs="
+    secure: "V0HoBxoB8sa4jh0FX6vPBhrL4nGbpfyxlIDmRG6ZpoTPHptBCenlTH+dsdjYtf8LedKgIOUX7FFsIMYuZHx6tI0Wlc43yW9gLbm6Qs7f86O+KLVJkOCrS0/r5BFFuHhVCbSTpHtv9akpii6aCv5IUJMojLnO5aIV5OiipXj5ep1VRNX5PZYsdAwCCe8xHYgdSPGJ5ZAhPKV0hwJtW6Zqg3Tn5omJOfARpV0+6rQXMbIN1h2TzIOAE7K6u33VwvAr3Bs2hTzcxCq3Ew1gc+32NLF4noi2oNLD59XtrAXSQT4RX5vxPzcAcFiJnIYGWrEJEwNKcyfvdX6makCT46BgEXljDV5oCiN3BtE+EkexFF4qHsj+UnTFcpfWD3PiAzPOzpYelV8NwIm3LGA+uEgzduaFO9ukVuzNRWM8JF4icdX/srp3D7VF2f8U+ttCltUvXneNpapg6T6Zm1zMgCy5Y6WTK3U+xrhqLYOpLsjYkl0OZ2MJnQzDEFVlPz2Sg35V62iisxt4h8abeRTpyylhPmjLARrdsPf0n9qIfQcVzQJ1p6Wz/xqB9cHp9kdE0yiRdhjPvRdK6lqfy8lhzXW7mL3KQDUjPf2Z8JrQqKVtAX6psZno/PLc/jOwV4mE391Kj8/pNyZa8Qq7go9BpLh5LnNsH8u0qqwFh6pyNnwvSME="
   distributions: sdist bdist_wheel
   on:
     tags: true
     all_branches: true
     python: 3.5
+    repo: vir-mir/aiorest_validator
