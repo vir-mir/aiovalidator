@@ -2,6 +2,6 @@ aiohttp==1.1.6
 pytest-aiohttp==0.1.2
 pytest
 coverage==4.2
-pytest-cov
 pytest-sugar==0.7.1
 pep8==1.7.0
+pytest-cov==2.4.0
