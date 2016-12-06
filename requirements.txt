@@ -1,6 +1,6 @@
 aiohttp==1.1.6
 pytest-aiohttp
-pytest
+pytest==3.0.5
 coverage
 pytest-cov
 pytest-sugar
