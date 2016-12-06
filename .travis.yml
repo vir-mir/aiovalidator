@@ -1,0 +1,38 @@
+sudo: required
+language: python
+
+services:
+  - docker
+
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6-dev"
+
+install:
+  # - python setup.py install
+  - pip install -Ur requirements.txt
+  - pip install coveralls
+
+script:
+  - make cov-ci
+  # - python setup.py check -rms
+
+env:
+  global:
+    - PYTHON=python
+  matrix:
+    - USE_SA=1 PYTHONASYNCIODEBUG=x
+    - USE_SA=0 PYTHONASYNCIODEBUG=x
+    - USE_SA=1 PYTHONASYNCIODEBUG=
+    - USE_SA=0 PYTHONASYNCIODEBUG=
+
+cache:
+  directories:
+  - $HOME/.cache/pip
+
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
+
+after_script:
+  - coveralls
