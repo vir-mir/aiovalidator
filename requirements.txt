@@ -4,4 +4,4 @@ pytest
 coverage
 pytest-cov
 pytest-sugar
-pep8
+pep8==1.7.0
