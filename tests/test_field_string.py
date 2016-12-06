@@ -2,8 +2,8 @@ import enum
 
 import pytest
 
-from aiorest_validator import StrField, EnumField
-from aiorest_validator.middlewares.exception import HTTPExceptionJson
+from aiovalidator import StrField, EnumField
+from aiovalidator.middlewares.exception import HTTPExceptionJson
 
 
 @pytest.mark.parametrize('val,resp', (
