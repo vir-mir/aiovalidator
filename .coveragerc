@@ -1,6 +1,6 @@
 [run]
 branch = True
-source = aiorest_validator, tests
+source = aiovalidator, tests
 omit = site-packages
 
 [html]

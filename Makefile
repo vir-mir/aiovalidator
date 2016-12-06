@@ -3,17 +3,17 @@ doc:
 	@echo "open file://`pwd`/docs/_build/html/index.html"
 
 pep:
-	pep8 aiorest_validator example tests
+	pep8 aiovalidator example tests
 
 test: pep
 	py.test -q tests
 
 cov cover coverage: pep
-	py.test --cov=aiorest_validator --cov-report=html --cov-report=term tests
+	py.test --cov=aiovalidator --cov-report=html --cov-report=term tests
 	@echo "open file://`pwd`/htmlcov/index.html"
 
 cov-ci: pep
-	py.test -v --cov=aiorest_validator --cov-report=term tests
+	py.test -v --cov=aiovalidator --cov-report=term tests
 
 clean:
 	find . -name __pycache__ |xargs rm -rf
