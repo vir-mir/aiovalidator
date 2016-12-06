@@ -1,46 +1,37 @@
 sudo: required
 language: python
-
 services:
   - docker
-
 python:
-  - "3.4"
-  - "3.5"
-  - "3.6-dev"
-
+  - '3.4'
+  - '3.5'
+  - '3.6-dev'
 install:
   - python setup.py install
   - pip install -Ur requirements.txt
   - pip install codecov
-
 script:
   - make cov-ci
   - python setup.py check -ms
-
 env:
   global:
     - PYTHON=python
   matrix:
     - PYTHONASYNCIODEBUG=x
     - PYTHONASYNCIODEBUG=
-
 cache:
   directories:
-  - $HOME/.cache/pip
-
+    - "$HOME/.cache/pip"
 before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
-
 after_script:
   - codecov
-
 deploy:
   provider: pypi
   user: virmir49
   password:
-    secure: "YcyMRjDWi0HhMzOb5RE2nb+8Cq1/g0Vqtkx3qJBf+dOSy1kGM62BwJgmLTso898DGlBc49d2YLdl2I4EQo9O4OgzeCZ1GZJD3l2VJyT0RVqSRPjrcgjrkEubUIsx2mslUbi4FUeE6dDweIqxyc+cMuBv0jDIlId/iDmgxchZolQ7yGMHOeaHofrIWJLs5IVOlnya1/mAeYXvryGPcA9n/e8IcPIGAKD8tBWSUhhxSysvlaUkbJIbH5eMhn4jMMMczqMH+pkAWgVaGVCjWVD7gGeEIp1GsDX9ufVJHyMTNinSBGeyEjkLupFuBQIq62bGJc6AUHkoaq90EiNUYPLKs5AIkrgxhPnUaSlfOJy0qnuwRdIZUHx2yyOQmoavmN3SYRFRYg7Lfo5BhHzyQVFIxbghqc9hRyF0vvpSOGw8ERMrlgzx4yHu3kjM6cU1kdOIKSEL0GatuB+9GgwP978XynLRBrhTY6GCiRWehsmevMUHeqMhoF3vRU8FvH0hmzjlYozKw2odsb5QW4ITh93pQrfNiMIqouhJ3hGT7uu1aSz9iE408x6xmovAi36HFvSaGhScxiIYe6E0pCFC6wBsD86R2vLgrHG8swQ9SEDsAT4rV3yWGfd5xjavvbYbN2RO/2v+2qjUO3WUVEhgltk3Eh6nM3Z+2GyIPatmBdalbno="
-  distributions: "sdist bdist_wheel"
+    secure: yFRF0kpPFx2Dmu9n9t58Y8CmwvQ6WVaTsysZf43CQ7ME7P5O/QZUJhtcQ/IEmmHz8MbMBnOjoAW7iibkIuS72OtrRSFDbJhM/Y5ktpeBpZD8yiZCjA0hXzqTxIt/1eGYqBEY8KUl1Taf29dX6mXjRbhxECdzTohjGmA//DKBTqceQUOd2JnREEb10S00T1YNrXaiUAawOs1h8fR1USkpB4OskcyiThPKsvLTXQKcysnO5FfnZwTCxnYrhq1NGTCULftBzpfh19JWU/DInveLBuIq+bauIcJISEzKWq0D41TGfdSMXm7PLQUe9KxvEuOchXpP1cRzvCgQ8H+UNIVtyb0h72R2rWRU9TKIbk0RSgbeBxrHZVhQgUhF/z/ml7s4DEi3P6QNm0zq3S5ECOnOLV9kVQjejbrFZHtSrW8Xtb4kvhmX7j+Z2n4yCGe+X9FkkArX7pAbjV9uR9iNGLIyeFKz7LOl2gfkYgKpYE+K7Atr6LU67w6vnY+wf4mEIn99rqf7O9TBezf+wLoh2t25Zy81S1AU51xERAti/IuL9nlq4AfOf4eTdsUztEc2GKX7MNetL2Sd0JmV06MX81OAlf6mDv0hgmnZX9Z1ns9T9gQyJNhdHiqbgmh3HLsD+/CWNsDfmj8a2eEX04mi8iDvElz7eobR6TIkadmPEWFnkpw=
+  distributions: sdist bdist_wheel
   on:
     tags: true
     all_branches: true
