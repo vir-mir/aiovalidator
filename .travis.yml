@@ -12,7 +12,7 @@ python:
 install:
   # - python setup.py install
   - pip install -Ur requirements.txt
-  - pip install coveralls
+  - pip install codecov
 
 script:
   - make cov-ci
@@ -33,4 +33,4 @@ before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 
 after_script:
-  - coveralls
+  - codecov
