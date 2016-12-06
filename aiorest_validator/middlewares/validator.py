@@ -1,10 +1,17 @@
 import asyncio
 import itertools
 import json
+import sys
 from functools import wraps
 
 from aiorest_validator.fields.base import BaseField
 from aiorest_validator.fields.manager import ManagerField
+
+PY_35 = sys.version_info >= (3, 5)
+if PY_35:
+    from json import JSONDecodeError
+else:
+    JSONDecodeError = ValueError
 
 __all__ = ['validator_factory']
 
@@ -12,7 +19,7 @@ __all__ = ['validator_factory']
 def _loads(data):
     try:
         return json.loads(data)
-    except json.JSONDecodeError:
+    except JSONDecodeError:
         return {}
 
 
