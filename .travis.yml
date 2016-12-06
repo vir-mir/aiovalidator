@@ -37,3 +37,4 @@ deploy:
     all_branches: true
     distributions: sdist bdist_wheel
     repo: vir-mir/aiovalidator
+    python: 3.5
