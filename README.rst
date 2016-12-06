@@ -3,7 +3,7 @@ aiovalidator
 .. image:: https://travis-ci.org/vir-mir/aiovalidator.svg?branch=master
     :target: https://travis-ci.org/vir-mir/aiovalidator
 .. image:: https://codecov.io/gh/vir-mir/aiovalidator/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/vir-mir/aiovalidator
+    :target: https://codecov.io/gh/vir-mir/aiovalidator
 
 
 Example
