@@ -34,3 +34,14 @@ before_cache:
 
 after_script:
   - codecov
+
+deploy:
+  provider: pypi
+  user: virmir49
+  password:
+    secure: $PYPY_PASSWORD
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+    all_branches: true
+    python: 3.5
