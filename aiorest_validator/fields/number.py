@@ -9,7 +9,8 @@ class IntegerField(BaseField):
         try:
             return int(value)
         except (ValueError, TypeError):
-            abort(status=406, text='Field {} is not integer'.format(self.name))
+            raise abort(status=406,
+                        text='Field {} is not integer'.format(self.name))
 
 
 class FloatField(BaseField):
@@ -17,7 +18,8 @@ class FloatField(BaseField):
         try:
             return float(value)
         except (ValueError, TypeError):
-            abort(status=406, text='Field {} is not float'.format(self.name))
+            raise abort(status=406,
+                        text='Field {} is not float'.format(self.name))
 
 
 class BoolField(IntegerField):

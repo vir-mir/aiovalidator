@@ -27,7 +27,7 @@ def abort(*, status, text):
             'message': text
         }
 
-    raise HTTPExceptionJson(status_code=status, text=text, headers={
+    return HTTPExceptionJson(status_code=status, text=text, headers={
         'Content-Type': 'application/json'
     })
 

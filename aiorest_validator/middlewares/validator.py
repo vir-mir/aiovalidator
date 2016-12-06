@@ -33,7 +33,7 @@ def validator_factory(loads=_loads):
                 if isinstance(getattr(cls_field, name), BaseField)
             )
 
-        load = getattr(handler, 'validator_dumps', None) or loads
+        load = getattr(handler, 'validator_loads', None) or loads
 
         @wraps(handler)
         @asyncio.coroutine

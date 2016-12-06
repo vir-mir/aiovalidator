@@ -16,14 +16,18 @@ class DateTimeField(StrField):
         try:
             return datetime.datetime.strptime(value, self.format)
         except ValueError:
-            abort(status=406,
-                  text='Field {} is not date time format, {}'.format(
-                      self.name, self.format))
+            raise abort(status=406,
+                        text='Field {} is not date time format, {}'.format(
+                            self.name, self.format))
 
 
 class DateField(DateTimeField):
     def __init__(self, format_='%Y-%m-%d', **kwargs):
         super().__init__(format_, **kwargs)
+
+    def get_value(self, value):
+        value = super().get_value(value)
+        return value.date()
 
 
 class TimeStampField(IntegerField):

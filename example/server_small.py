@@ -1,36 +1,44 @@
 import asyncio
+import enum
 
 from aiohttp import web
 
 from aiorest_validator import (
     validator_factory,
     middleware_exception,
-    IntegerField
+    IntegerField,
+    EnumField
 )
 
 
-async def foo(value):
-    await asyncio.sleep(3)
+async def foo_validator(value):
+    await asyncio.sleep(1)
     return value
 
 
-def foo2(value):
-    async def foo22():
+def foo_default(value):
+    async def default():
         return value
 
-    return foo22
+    return default
+
+
+class MyEnum(enum.Enum):
+    do = 'do value'
+    foo = 'foo value'
 
 
 class Hello(web.View):
     class Field:
-        qwe = IntegerField(validator=foo)
-        asds = IntegerField(default=foo2(4555555))
+        field1 = IntegerField(validator=foo_validator)
+        field2 = IntegerField(default=foo_default(4555555))
+        en = EnumField(enum_=MyEnum)
 
     @asyncio.coroutine
     def get(self):
         fields = self.request['fields']
         print(fields)
-        return web.json_response(fields)
+        return web.json_response()
 
 
 app = web.Application(middlewares=[validator_factory(), middleware_exception])
