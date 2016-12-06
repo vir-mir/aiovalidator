@@ -1,0 +1,70 @@
+import os
+import re
+import sys
+
+from setuptools import setup
+
+install_requires = ['aiohttp>=1.1.6']
+
+PY_VER = sys.version_info
+
+if PY_VER < (3, 4):
+    raise RuntimeError("aiorest_validator"
+                       " doesn't suppport Python earlier than 3.4")
+
+
+def read(f):
+    return open(os.path.join(os.path.dirname(__file__), f)).read().strip()
+
+
+def read_version():
+    regexp = re.compile(r"^__version__\W*=\W*'([\d.abrc]+)'")
+    init_py = os.path.join(os.path.dirname(__file__),
+                           'aiorest_validator', '__init__.py')
+    with open(init_py) as f:
+        for line in f:
+            match = regexp.match(line)
+            if match is not None:
+                return match.group(1)
+        else:
+            raise RuntimeError('Cannot find version in '
+                               'aiorest_validator/__init__.py')
+
+
+classifiers = [
+    'License :: OSI Approved :: BSD License',
+    'Intended Audience :: Developers',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.4',
+    'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6-beta',
+    'Operating System :: POSIX',
+    'Operating System :: MacOS :: MacOS X',
+    'Operating System :: Microsoft :: Windows',
+    'Environment :: Web Environment',
+    'Development Status :: 4 - Beta',
+    'Topic :: Database',
+    'Topic :: Database :: Front-Ends',
+]
+
+
+def get_packages(package):
+    return [dirpath
+            for dirpath, dirnames, filenames in os.walk(package)
+            if os.path.exists(os.path.join(dirpath, '__init__.py'))]
+
+
+setup(name='aiorest_validator',
+      version=read_version(),
+      description='rest, restful validator aiohttp',
+      long_description='\n\n'.join((read('README.md'), read('CHANGES.txt'))),
+      classifiers=classifiers,
+      platforms=['POSIX'],
+      author='Alexey Firsov',
+      author_email='virmir49@gmail.com',
+      url='https://github.com/vir-mir',
+      download_url='https://pypi.python.org/pypi/aiorest_validator',
+      license='Apache-2.0',
+      packages=get_packages('aiorest_validator'),
+      install_requires=install_requires,
+      include_package_data=True)

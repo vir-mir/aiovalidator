@@ -10,22 +10,20 @@ python:
   - "3.6-dev"
 
 install:
-  # - python setup.py install
+  - python setup.py install
   - pip install -Ur requirements.txt
-  - pip install coveralls
+  - pip install codecov
 
 script:
   - make cov-ci
-  # - python setup.py check -rms
+  - python setup.py check -ms
 
 env:
   global:
     - PYTHON=python
   matrix:
-    - USE_SA=1 PYTHONASYNCIODEBUG=x
-    - USE_SA=0 PYTHONASYNCIODEBUG=x
-    - USE_SA=1 PYTHONASYNCIODEBUG=
-    - USE_SA=0 PYTHONASYNCIODEBUG=
+    - PYTHONASYNCIODEBUG=x
+    - PYTHONASYNCIODEBUG=
 
 cache:
   directories:
@@ -35,4 +33,4 @@ before_cache:
   - rm -f $HOME/.cache/pip/log/debug.log
 
 after_script:
-  - coveralls
+  - codecov
