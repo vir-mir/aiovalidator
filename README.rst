@@ -71,10 +71,10 @@ My fields example
                 region = phonenumbers.region_code_for_number(value)
                 regions = phonenumbers.COUNTRY_CODE_TO_REGION_CODE[7]
                 if not phonenumbers.is_valid_number(value):
-                    abort(status=400,
+                    raise abort(status=400,
                           text='Field {} not format phone'.format(self.name))
                 if region not in regions:
-                    abort(status=400,
+                    raise abort(status=400,
                           text='Field {} not format phone'.format(self.name))
                 value = phonenumbers.format_number(
                     value, phonenumbers.PhoneNumberFormat.E164
@@ -82,4 +82,4 @@ My fields example
 
                 return value
             except phonenumbers.NumberParseException:
-                abort(status=400, text='Field {} not valid'.format(self.name))
+                raise abort(status=400, text='Field {} not valid'.format(self.name))
