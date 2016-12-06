@@ -1,47 +1,39 @@
 sudo: required
 language: python
-
 services:
-  - docker
-
+- docker
 python:
-  - '3.4'
-  - '3.5'
-  - '3.6-dev'
-
+- '3.4'
+- '3.5'
+- 3.6-dev
 install:
-  - python setup.py install
-  - pip install -Ur requirements.txt
-  - pip install codecov
-
+- python setup.py install
+- pip install -Ur requirements.txt
+- pip install codecov
 script:
-  - make cov-ci
-  - python setup.py check -ms
-
+- make cov-ci
+- python setup.py check -ms
 env:
   global:
-    - PYTHON=python
+  - PYTHON=python
   matrix:
-    - PYTHONASYNCIODEBUG=x
-    - PYTHONASYNCIODEBUG=
-
+  - PYTHONASYNCIODEBUG=x
+  - PYTHONASYNCIODEBUG=
 cache:
   directories:
-    - "$HOME/.cache/pip"
-
+  - "$HOME/.cache/pip"
 before_cache:
-  - rm -f $HOME/.cache/pip/log/debug.log
-
+- rm -f $HOME/.cache/pip/log/debug.log
 after_script:
-  - codecov
+- codecov
+
 deploy:
   provider: pypi
   user: virmir49
   password:
-    secure: "V0HoBxoB8sa4jh0FX6vPBhrL4nGbpfyxlIDmRG6ZpoTPHptBCenlTH+dsdjYtf8LedKgIOUX7FFsIMYuZHx6tI0Wlc43yW9gLbm6Qs7f86O+KLVJkOCrS0/r5BFFuHhVCbSTpHtv9akpii6aCv5IUJMojLnO5aIV5OiipXj5ep1VRNX5PZYsdAwCCe8xHYgdSPGJ5ZAhPKV0hwJtW6Zqg3Tn5omJOfARpV0+6rQXMbIN1h2TzIOAE7K6u33VwvAr3Bs2hTzcxCq3Ew1gc+32NLF4noi2oNLD59XtrAXSQT4RX5vxPzcAcFiJnIYGWrEJEwNKcyfvdX6makCT46BgEXljDV5oCiN3BtE+EkexFF4qHsj+UnTFcpfWD3PiAzPOzpYelV8NwIm3LGA+uEgzduaFO9ukVuzNRWM8JF4icdX/srp3D7VF2f8U+ttCltUvXneNpapg6T6Zm1zMgCy5Y6WTK3U+xrhqLYOpLsjYkl0OZ2MJnQzDEFVlPz2Sg35V62iisxt4h8abeRTpyylhPmjLARrdsPf0n9qIfQcVzQJ1p6Wz/xqB9cHp9kdE0yiRdhjPvRdK6lqfy8lhzXW7mL3KQDUjPf2Z8JrQqKVtAX6psZno/PLc/jOwV4mE391Kj8/pNyZa8Qq7go9BpLh5LnNsH8u0qqwFh6pyNnwvSME="
-  distributions: sdist bdist_wheel
+    secure: w6Zoi2NAswGddzzVoPpnKVYmO7XWw8SN/zzMiiLwBGNF0C0oSC7dDw4p3v5lbxqB/+ZmbLGuKxmbniq+78Xcmhl0NfCZtomB/b52LMl975fvTgHOTgSCa2Md+v2hDzniC0dB8CuEtq1U2ulWcJHfNHkB6EJ6Wpzs7aPQRFCdYVydxLUJ41ydcW7aE6z1ZInvEJl9oaDI1nVPqMU1D9RwyYzy3XwQuxE3Oi/yJoTiYr3efjucK9APDyNSZx3jUNGYwCVxNmJSBH9esY2KVDRlXfloYgynY0Y1phHUCsOfjosSdePrEbt6XPsqvNObUI2vz8FaWwIq+EjACJ/+Q1XEuF1pPjaqUb3U5X9EPmrhn/ripgvOdKVBTPB1cuaiDGdlQMgLrKPwlJ+ZQddmrs2SQFprUVGXi7R22hLGVFN3OuKOp6Qh5AyX/DP3zuH4xSelh1wsYo8GiiNvrxcG50QoV3m5ZoKEr/u0/UR81PqJCqeJ+jP3blbpmyzq6qNCUlv9lBdlKDEVl9OAOjfVOhXAGnGwBTpmgAo6PAuJpLZvtBFP2nzP+f5w5dNHoj28Y2pLF/JQOjTZWurI0xXzzm8o571zOxpv+ZosDWEvFGJBcipUI5rigd4ZUcF6qLzTxjTFiPNFQ1Y1uX2UCcKa28LPuObXGyX7lz55ZxeoAp2kb3Q=
   on:
     tags: true
     all_branches: true
-    python: 3.5
+    distributions: sdist bdist_wheel
     repo: vir-mir/aiorest_validator
