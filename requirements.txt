@@ -1,5 +1,5 @@
 aiohttp==1.1.6
-pytest-aiohttp
+pytest-aiohttp==0.1.2
 pytest
 coverage
 pytest-cov
