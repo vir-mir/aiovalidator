@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/vir-mir/aiorest_validator.svg?branch=master)](https://travis-ci.org/vir-mir/aiorest_validator)
+
 # aiorest_validator
+
 
 ### small start example 
 ```python

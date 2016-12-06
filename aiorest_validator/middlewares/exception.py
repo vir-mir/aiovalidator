@@ -1,3 +1,4 @@
+import asyncio
 import json
 from functools import wraps
 
@@ -7,11 +8,13 @@ from aiohttp.web import HTTPException
 __all__ = ['middleware_exception', 'abort']
 
 
-async def middleware_exception(app, handler):
+@asyncio.coroutine
+def middleware_exception(app, handler):
     @wraps(handler)
-    async def middleware_handler(request):
+    @asyncio.coroutine
+    def middleware_handler(request):
         try:
-            return await handler(request)
+            return (yield from handler(request))
         except HTTPException as e:
             if not isinstance(e, HTTPExceptionJson):
                 return HTTPExceptionJson(status_code=e.status,
