@@ -3,5 +3,5 @@ pytest-aiohttp
 pytest
 coverage
 pytest-cov
-pytest-sugar
+pytest-sugar==0.7.1
 pep8
