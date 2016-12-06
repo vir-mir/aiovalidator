@@ -56,7 +56,7 @@ def get_packages(package):
 setup(name='aiovalidator',
       version=read_version(),
       description='rest, restful validator aiohttp',
-      long_description='\n\n'.join((read('README.md'), read('CHANGES.txt'))),
+      long_description='\n\n'.join((read('README.rst'), read('CHANGES.txt'))),
       classifiers=classifiers,
       platforms=['POSIX'],
       author='Alexey Firsov',
