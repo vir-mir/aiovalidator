@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/vir-mir/aiorest_validator.svg?branch=master)](https://travis-ci.org/vir-mir/aiorest_validator)
+[![Build Status](https://travis-ci.org/vir-mir/aiovalidator.svg?branch=master)](https://travis-ci.org/vir-mir/aiovalidator)
 
-# aiorest_validator
+# aiovalidator
 
 
 ### small start example 
@@ -9,7 +9,7 @@ import asyncio
 
 from aiohttp import web
 
-from aiorest_validator import (
+from aiovalidator import (
     validator_factory,
     middleware_exception,
     IntegerField
@@ -51,7 +51,7 @@ web.run_app(app, port=8000)
 ### my fields example
 ```python
 import phonenumbers
-from aiorest_validator import StrField, abort
+from aiovalidator import StrField, abort
 
 
 class PhoneField(StrField):

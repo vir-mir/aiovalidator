@@ -1,7 +1,7 @@
 import pytest
 
-from aiorest_validator import IntegerField, FloatField, BoolField
-from aiorest_validator.middlewares.exception import HTTPExceptionJson
+from aiovalidator import IntegerField, FloatField, BoolField
+from aiovalidator.middlewares.exception import HTTPExceptionJson
 
 
 @pytest.mark.parametrize('val', (2, '2', 2.9))
