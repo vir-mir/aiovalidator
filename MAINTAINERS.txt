@@ -1,0 +1,6 @@
+Maintainers
+-----------
+
+The list of *aiorest_validator* maintainers.
+
+Alexey Firsov <virmir49@gmail.com>
