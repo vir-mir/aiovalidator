@@ -11,12 +11,14 @@ from aiorest_validator import (
     abort)
 
 
-async def foo_validator_async(value):
+@asyncio.coroutine
+def foo_validator_async(value):
     return value * 2
 
 
 def foo_default_async(value):
-    async def default():
+    @asyncio.coroutine
+    def default():
         return value * 2
 
     return default
