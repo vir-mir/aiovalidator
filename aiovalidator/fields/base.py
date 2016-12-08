@@ -4,8 +4,17 @@ from aiohttp.hdrs import METH_ALL
 
 
 class BaseField(ABC):
-    def __init__(self, *, verbose_name=None, default=None,
-                 required=True, methods=None, validator=None):
+    def __init__(self, *, verbose_name: str = None, default: object = None,
+                 required: bool = True, methods: set = None,
+                 validator: object = None):
+        """
+
+        :param verbose_name: description field
+        :param default: handler or data type
+        :param required: If you specify a default value, forced to set false
+        :param methods: HTTP methods
+        :param validator: handler or data type
+        """
         self.methods = set(str.upper(x)
                            for x in methods) if methods else METH_ALL
         self.verbose_name = verbose_name
@@ -15,11 +24,15 @@ class BaseField(ABC):
         self._name = None
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
 
     @name.setter
-    def name(self, value):
+    def name(self, value: str) -> None:
+        """
+
+        :param value:
+        """
         self._name = value
 
     def default(self):

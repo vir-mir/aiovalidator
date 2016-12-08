@@ -7,11 +7,13 @@ from aiovalidator import (
     validator_factory,
     middleware_exception,
     IntegerField,
-    EnumField
+    EnumField,
+    StrField
 )
 
 
 async def foo_validator(value):
+    assert isinstance(value, int)
     await asyncio.sleep(1)
     return value
 
@@ -31,7 +33,7 @@ class MyEnum(enum.Enum):
 class Hello(web.View):
     class Field:
         field1 = IntegerField(validator=foo_validator)
-        field2 = IntegerField(default=foo_default(4555555))
+        field2 = StrField(default=foo_default('default string'))
         en = EnumField(enum_=MyEnum)
 
     @asyncio.coroutine
@@ -41,7 +43,7 @@ class Hello(web.View):
         return web.json_response()
 
 
-app = web.Application(middlewares=[validator_factory(), middleware_exception])
+app = web.Application(middlewares=[validator_factory(),
+                                   middleware_exception])
 app.router.add_get('/', Hello)
-app.router.add_get('/{qwe}/', Hello)
 web.run_app(app, port=8000)

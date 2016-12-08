@@ -12,6 +12,9 @@ if PY_VER < (3, 4):
     raise RuntimeError("aiovalidator"
                        " doesn't suppport Python earlier than 3.4")
 
+if PY_VER < (3, 5):
+    install_requires.append('typing>=3.5.2')
+
 
 def read(f):
     return open(os.path.join(os.path.dirname(__file__), f)).read().strip()
