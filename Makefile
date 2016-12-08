@@ -1,7 +1,3 @@
-doc:
-	cd docs && make html
-	@echo "google-chrome file://`pwd`/docs/_build/html/index.html"
-
 pep:
 	pep8 aiovalidator example tests
 
@@ -26,5 +22,10 @@ clean:
 	find . -type f -name '*.rej' -delete
 	rm -f .coverage
 	rm -rf coverage
-	rm -rf docs/_build
+	rm -rf docs/build
 	rm -rf .tox
+
+doc: clean
+	cd docs && make html
+#	google-chrome file://`pwd`/docs/build/html/index.html
+

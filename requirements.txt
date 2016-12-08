@@ -6,3 +6,4 @@ pep8==1.7.0
 pytest-cov==2.4.0
 sphinxcontrib-asyncio==0.2.0
 Sphinx==1.5
+sphinx-autodoc-typehints==1.1.0
