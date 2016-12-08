@@ -1,6 +1,6 @@
 doc:
 	cd docs && make html
-	@echo "open file://`pwd`/docs/_build/html/index.html"
+	@echo "google-chrome file://`pwd`/docs/_build/html/index.html"
 
 pep:
 	pep8 aiovalidator example tests
