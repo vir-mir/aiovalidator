@@ -9,7 +9,7 @@ aiovalidator
 Example
 -------
 
-::
+.. code-block:: python
 
     import asyncio
 
@@ -57,7 +57,7 @@ Example
 My fields example
 -----------------
 
-::
+.. code-block:: python
 
     import phonenumbers
     from aiovalidator import StrField, abort
