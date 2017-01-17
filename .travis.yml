@@ -5,7 +5,7 @@ services:
 python:
 - '3.4'
 - '3.5'
-- 3.6-dev
+- '3.6'
 install:
 - python setup.py install
 - pip install -Ur requirements.txt
