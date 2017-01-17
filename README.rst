@@ -5,6 +5,13 @@ aiovalidator
 .. image:: https://codecov.io/gh/vir-mir/aiovalidator/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/vir-mir/aiovalidator
 
+Wraps aiophtt, for validation and rapid construction of micro-services.
+pros:
+- Easy integration without affecting the operation of the entire project
+- Declarative description of the input parameters
+- The ability to validate asynchronously
+- Availability of methods for http
+
 
 Example
 -------
