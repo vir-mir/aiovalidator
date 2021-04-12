@@ -5,4 +5,4 @@ pytest-sugar==0.8.0
 pep8==1.7.0
 pytest-cov==2.4.0
 sphinxcontrib-asyncio==0.2.0
-Sphinx==1.5.5
+Sphinx==3.5.4
